@@ -48,5 +48,6 @@ class RegisteredUserController extends Controller
         echo "usuario criado";
        // return redirect(RouteServiceProvider::HOME);
        //usar return view
+       return view('auth.register')->with('success', 'Usuário criado com sucesso!');
     }
 }
