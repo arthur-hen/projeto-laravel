@@ -1,4 +1,4 @@
-@extends('template_admin.index')
+@extends('template.index')
 @section('conteudo')
 
 <div class="container-fluid mt-5 pt-3"> 
