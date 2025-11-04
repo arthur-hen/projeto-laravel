@@ -69,7 +69,7 @@
                 <nav class="navbar navbar-expand-lg navbar-light">
                     <a href="" class="navbar-brand p-0">
                         <h1 class="display-6 text-primary"><i class="fas fa-car-alt me-3"></i></i>Cental</h1>
-                        <!-- <img src="img/logo.png" alt="Logo"> -->
+                         <img src="{{('assets/img/logo.png')}}" alt="Logo"> 
                     </a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                         <span class="fa fa-bars"></span>
@@ -99,7 +99,7 @@
                 </ol>
                 <div class="carousel-inner" role="listbox">
                     <div class="carousel-item active">
-                        <img src="img/carousel-2.jpg" class="img-fluid w-100" alt="First slide"/>
+                        <img src="{{('assets/img/carousel-2.jpg')}}" class="img-fluid w-100" alt="First slide"/>
                         <div class="carousel-caption">
                             <div class="container py-4">
                                 <div class="row g-5">
@@ -188,7 +188,7 @@
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img src="img/carousel-1.jpg" class="img-fluid w-100" alt="First slide"/>
+                        <img src="{{('assets/img/carousel-1.jpg')}}" class="img-fluid w-100" alt="First slide"/>
                         <div class="carousel-caption">
                             <div class="container py-4">
                                 <div class="row g-5">
@@ -296,7 +296,7 @@
                                 <div class="col-lg-6">
                                     <div class="about-item-inner border p-4">
                                         <div class="about-icon mb-4">
-                                            <img src="img/about-icon-1.png" class="img-fluid w-50 h-50" alt="Icon">
+                                            <img src="{{('assets/img/about-icon-1.png')}}" class="img-fluid w-50 h-50" alt="Icon">
                                         </div>
                                         <h5 class="mb-3">Our Vision</h5>
                                         <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
@@ -305,7 +305,7 @@
                                 <div class="col-lg-6">
                                     <div class="about-item-inner border p-4">
                                         <div class="about-icon mb-4">
-                                            <img src="img/about-icon-2.png" class="img-fluid h-50 w-50" alt="Icon">
+                                            <img src="{{('assets/img/about-icon-2.png')}}" class="img-fluid h-50 w-50" alt="Icon">
                                         </div>
                                         <h5 class="mb-3">Our Mision</h5>
                                         <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
@@ -334,7 +334,7 @@
                                 </div>
                                 <div class="col-lg-7">
                                     <div class="d-flex align-items-center">
-                                        <img src="img/attachment-img.jpg" class="img-fluid rounded-circle border border-4 border-secondary" style="width: 100px; height: 100px;" alt="Image">
+                                        <img src="{{('assets/img/attachment-img.jpg')}}" class="img-fluid rounded-circle border border-4 border-secondary" style="width: 100px; height: 100px;" alt="Image">
                                         <div class="ms-4">
                                             <h4>William Burgess</h4>
                                             <p class="mb-0">Carveo Founder</p>
@@ -347,10 +347,10 @@
                     <div class="col-xl-6 wow fadeInRight" data-wow-delay="0.2s">
                         <div class="about-img">
                             <div class="img-1">
-                                <img src="img/about-img.jpg" class="img-fluid rounded h-100 w-100" alt="">
+                                <img src="{{('assets/img/about-img.jpg')}}" class="img-fluid rounded h-100 w-100" alt="">
                             </div>
                             <div class="img-2">
-                                <img src="img/about-img-1.jpg" class="img-fluid rounded w-100" alt="">
+                                <img src="{{('assets/img/about-img-1.jpg')}}" class="img-fluid rounded w-100" alt="">
                             </div>
                         </div>
                     </div>
@@ -371,7 +371,7 @@
                     <div class="categories-item p-4">
                         <div class="categories-item-inner">
                             <div class="categories-img rounded-top">
-                                <img src="img/car-1.png" class="img-fluid w-100 rounded-top" alt="">
+                                <img src="{{('assets/img/car-1.png')}}" class="img-fluid w-100 rounded-top" alt="">
                             </div>
                             <div class="categories-content rounded-bottom p-4">
                                 <h4>Mercedes Benz R3</h4>
@@ -415,7 +415,7 @@
                     <div class="categories-item p-4">
                         <div class="categories-item-inner">
                             <div class="categories-img rounded-top">
-                                <img src="img/car-2.png" class="img-fluid w-100 rounded-top" alt="">
+                                <img src="{{('assets/img/car-2.png')}}" class="img-fluid w-100 rounded-top" alt="">
                             </div>
                             <div class="categories-content rounded-bottom p-4">
                                 <h4>Toyota Corolla Cross</h4>
@@ -459,7 +459,7 @@
                     <div class="categories-item p-4">
                         <div class="categories-item-inner">
                             <div class="categories-img rounded-top">
-                                <img src="img/car-3.png" class="img-fluid w-100 rounded-top" alt="">
+                                <img src="{{('assets/img/car-3.png')}}" class="img-fluid w-100 rounded-top" alt="">
                             </div>
                             <div class="categories-content rounded-bottom p-4">
                                 <h4>Tesla Model S Plaid</h4>
@@ -503,7 +503,7 @@
                     <div class="categories-item p-4">
                         <div class="categories-item-inner">
                             <div class="categories-img rounded-top">
-                                <img src="img/car-4.png" class="img-fluid w-100 rounded-top" alt="">
+                                <img src="{{('assets/img/car-4.png')}}" class="img-fluid w-100 rounded-top" alt="">
                             </div>
                             <div class="categories-content rounded-bottom p-4">
                                 <h4>Hyundai Kona Electric</h4>
@@ -561,7 +561,7 @@
                     <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.1s">
                         <div class="team-item p-4 pt-0">
                             <div class="team-img">
-                                <img src="img/team-1.jpg" class="img-fluid rounded w-100" alt="Image">
+                                <img src="{{('assets/img/team-1.jpg')}}" class="img-fluid rounded w-100" alt="Image">
                             </div>
                             <div class="team-content pt-4">
                                 <h4>MARTIN DOE</h4>
@@ -578,7 +578,7 @@
                     <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.3s">
                         <div class="team-item p-4 pt-0">
                             <div class="team-img">
-                                <img src="img/team-2.jpg" class="img-fluid rounded w-100" alt="Image">
+                                <img src="{{('assets/img/team-2.jpg')}}" class="img-fluid rounded w-100" alt="Image">
                             </div>
                             <div class="team-content pt-4">
                                 <h4>MARTIN DOE</h4>
@@ -595,7 +595,7 @@
                     <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.5s">
                         <div class="team-item p-4 pt-0">
                             <div class="team-img">
-                                <img src="img/team-3.jpg" class="img-fluid rounded w-100" alt="Image">
+                                <img src="{{('assets/img/team-3.jpg')}}" class="img-fluid rounded w-100" alt="Image">
                             </div>
                             <div class="team-content pt-4">
                                 <h4>MARTIN DOE</h4>
@@ -612,7 +612,7 @@
                     <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.7s">
                         <div class="team-item p-4 pt-0">
                             <div class="team-img">
-                                <img src="img/team-4.jpg" class="img-fluid rounded w-100" alt="Image">
+                                <img src="{{('assets/img/team-4.jpg')}}" class="img-fluid rounded w-100" alt="Image">
                             </div>
                             <div class="team-content pt-4">
                                 <h4>MARTIN DOE</h4>
@@ -643,7 +643,7 @@
                     <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
                         <div class="blog-item">
                             <div class="blog-img">
-                                <img src="img/blog-1.jpg" class="img-fluid rounded-top w-100" alt="Image">
+                                <img src="{{('assets/img/blog-1.jpg')}}" class="img-fluid rounded-top w-100" alt="Image">
                             </div>
                             <div class="blog-content rounded-bottom p-4">
                                 <div class="blog-date">30 Dec 2025</div>
@@ -660,7 +660,7 @@
                     <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
                         <div class="blog-item">
                             <div class="blog-img">
-                                <img src="img/blog-2.jpg" class="img-fluid rounded-top w-100" alt="Image">
+                                <img src="{{('assets/img/blog-2.jpg')}}" class="img-fluid rounded-top w-100" alt="Image">
                             </div>
                             <div class="blog-content rounded-bottom p-4">
                                 <div class="blog-date">25 Dec 2025</div>
@@ -677,7 +677,7 @@
                     <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
                         <div class="blog-item">
                             <div class="blog-img">
-                                <img src="img/blog-3.jpg" class="img-fluid rounded-top w-100" alt="Image">
+                                <img src="{{('assets/img/blog-3.jpg')}}" class="img-fluid rounded-top w-100" alt="Image">
                             </div>
                             <div class="blog-content rounded-bottom p-4">
                                 <div class="blog-date">27 Dec 2025</div>
