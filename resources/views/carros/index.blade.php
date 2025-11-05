@@ -1,4 +1,4 @@
-@Extends('template_admin.index')
+@Extends('template.index')
 
 @section('Conteudo')
     <h2>Carros</h2>
