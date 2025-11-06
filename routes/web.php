@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CarrosController;
 use App\Http\Controllers\ClientesController;
 use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\AdminController;
 
 
 /*
@@ -73,3 +74,16 @@ Route::post('/clientes/atualizar/{id}', [ClienteController::class, 'update'])
 
 Route::get('/clientes/excluir/{id}', [ClienteController::class, 'destroy']
 )-> name('clientes.excluir');
+
+
+
+Route::middleware(['auth', 'isAdmin'])
+    ->prefix('admin')
+    ->group(function () {
+        Route::get('/', [CarrosController::class, 'index'])->name('admin.dashboard');      // lista todos os carros
+        Route::get('/criar', [CarrosController::class, 'create'])->name('admin.carros.create'); // formulário de cadastro
+        Route::post('/salvar', [CarrosController::class, 'store'])->name('admin.carros.store'); // salvar no banco
+        Route::get('/editar/{id}', [CarrosController::class, 'edit'])->name('admin.carros.edit'); // formulário de edição
+        Route::put('/atualizar/{id}', [CarrosController::class, 'update'])->name('admin.carros.update'); // atualizar
+        Route::delete('/excluir/{id}', [CarrosController::class, 'destroy'])->name('admin.carros.destroy'); // excluir
+    });
