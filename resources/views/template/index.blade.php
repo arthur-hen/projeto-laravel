@@ -27,6 +27,17 @@
 
         <!-- Template Stylesheet -->
         <link href="{{('assets/css/style.css')}}" rel="stylesheet">
+
+        <div class="text-center my-4">
+    <a href="{{ route('register') }}" class="btn btn-outline-primary rounded-pill px-4 py-2 me-2">
+        <i class="fas fa-user-plus me-2"></i> Registrar
+    </a>
+    <a href="{{ route('login') }}" class="btn btn-primary rounded-pill px-4 py-2">
+        <i class="fas fa-sign-in-alt me-2"></i> Login
+    </a>
+</div>
+
+
     </head>
 
     <body>
