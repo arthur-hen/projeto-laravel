@@ -19,15 +19,14 @@ use App\Http\Controllers\AdminController;
 |
 */
 
+
+/*
 Route::get('/', function () {
     return view('welcome');
 });
-
-/*
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
 */
+
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -37,9 +36,26 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
+// Rota pública para a página de login (Breeze)
+Route::get('/login', function () {
+    return view('auth.login');
+})->name('login');
+
+
+
+
+/*
 route::get('/carros', 
 [CarrosController::class, 'index']
 )-> name('carros.index');
+*/
+
+Route::get('/carros', function () {
+    return view('template.index', [
+        'user_name' => session('user_name')
+    ]);
+})->name('public.index');
+
 
 Route::get('/carros/cadastrar', function (){
     return view('carros.cadastrar');
@@ -76,14 +92,18 @@ Route::get('/clientes/excluir/{id}', [ClienteController::class, 'destroy']
 )-> name('clientes.excluir');
 
 
-
 Route::middleware(['auth', 'isAdmin'])
     ->prefix('admin')
     ->group(function () {
-        Route::get('/', [CarrosController::class, 'index'])->name('admin.dashboard');      // lista todos os carros
-        Route::get('/criar', [CarrosController::class, 'create'])->name('admin.carros.create'); // formulário de cadastro
-        Route::post('/salvar', [CarrosController::class, 'store'])->name('admin.carros.store'); // salvar no banco
-        Route::get('/editar/{id}', [CarrosController::class, 'edit'])->name('admin.carros.edit'); // formulário de edição
-        Route::put('/atualizar/{id}', [CarrosController::class, 'update'])->name('admin.carros.update'); // atualizar
-        Route::delete('/excluir/{id}', [CarrosController::class, 'destroy'])->name('admin.carros.destroy'); // excluir
+
+        // Página inicial da área admin (CarrosController@index)
+        Route::get('/', [CarrosController::class, 'index'])->name('admin.index');
+
+        // CRUD de carros (opcional, mas bom manter)
+        Route::get('/carros', [CarrosController::class, 'index'])->name('admin.carros.index');
+        Route::get('/carros/cadastrar', [CarrosController::class, 'create'])->name('admin.carros.cadastrar');
+        Route::post('/carros', [CarrosController::class, 'store'])->name('admin.carros.salvar');
+        Route::get('/carros/editar/{id}', [CarrosController::class, 'edit'])->name('admin.carros.editar');
+        Route::put('/carros/atualizar/{id}', [CarrosController::class, 'update'])->name('admin.carros.atualizar');
+        Route::delete('/carros/excluir/{id}', [CarrosController::class, 'destroy'])->name('admin.carros.excluir');
     });

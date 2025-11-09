@@ -2,6 +2,13 @@
 <html lang="en">
 
     <head>
+
+    @if(isset($user_name))
+        <div class="alert alert-info text-center">
+            Bem-vindo, {{ $user_name }}!
+        </div>
+    @endif
+
         <meta charset="utf-8">
         <title>Cental - Car Rent Website Template</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -33,8 +40,9 @@
         <i class="fas fa-user-plus me-2"></i> Registrar
     </a>
     <a href="{{ route('login') }}" class="btn btn-primary rounded-pill px-4 py-2">
-        <i class="fas fa-sign-in-alt me-2"></i> Login
-    </a>
+    <i class="fas fa-sign-in-alt me-2"></i> Login
+</a>
+
 </div>
 
 
@@ -98,6 +106,8 @@
             </div>
         </div>
         <!-- Navbar & Hero End -->
+
+      
 
         <!-- Carousel Start -->
 <div class="header-carousel mb-5">
