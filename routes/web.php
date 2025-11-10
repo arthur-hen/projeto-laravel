@@ -91,6 +91,11 @@ Route::post('/clientes/atualizar/{id}', [ClienteController::class, 'update'])
 Route::get('/clientes/excluir/{id}', [ClienteController::class, 'destroy']
 )-> name('clientes.excluir');
 
+Route::middleware(['auth', 'isAdmin'])->prefix('admin')->group(function () {
+    
+    // Página inicial da área admin
+    Route::get('/', [CarrosController::class, 'index'])->name('admin.index');
+
 
 Route::middleware(['auth', 'isAdmin'])
     ->prefix('admin')
@@ -107,3 +112,12 @@ Route::middleware(['auth', 'isAdmin'])
         Route::put('/carros/atualizar/{id}', [CarrosController::class, 'update'])->name('admin.carros.atualizar');
         Route::delete('/carros/excluir/{id}', [CarrosController::class, 'destroy'])->name('admin.carros.excluir');
     });
+
+    // CRUD de carros
+    Route::get('/carros', [CarrosController::class, 'index'])->name('admin.carros.index');
+    Route::get('/carros/cadastrar', [CarrosController::class, 'create'])->name('admin.carros.create');
+    Route::post('/carros', [CarrosController::class, 'store'])->name('admin.carros.store');
+    Route::get('/carros/editar/{id}', [CarrosController::class, 'edit'])->name('admin.carros.edit');
+    Route::put('/carros/{id}', [CarrosController::class, 'update'])->name('admin.carros.update');
+    Route::delete('/carros/{id}', [CarrosController::class, 'destroy'])->name('admin.carros.destroy');
+});

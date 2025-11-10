@@ -86,7 +86,8 @@
     <!-- Barra de navegação superior -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top shadow">
         <div class="container-fluid">
-            <a class="navbar-brand d-flex align-items-center" href="{{ route('admin.dashboard') }}">
+            <a class="navbar-brand d-flex align-items-center" href="{{ route('admin.carros.index') }}"></a>
+
                 <h1 class="h4 mb-0"><i class="fas fa-tools me-2"></i>Painel Admin</h1>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -111,7 +112,7 @@
     <!-- Barra lateral -->
     <div class="sidebar">
         <h5 class="px-3 mb-4 text-uppercase text-secondary">Menu</h5>
-        <a href="{{ route('admin.dashboard') }}" class="{{ request()->is('admin') ? 'active' : '' }}">
+        <a href="{{ route('admin.carros.index') }}" class="{{ request()->is('admin') ? 'active' : '' }}">
             <i class="fas fa-car me-2"></i> Veículos
         </a>
         <a href="{{ route('admin.carros.create') }}">

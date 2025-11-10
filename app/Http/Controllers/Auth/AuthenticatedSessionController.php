@@ -9,6 +9,8 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
+use App\Models\Carros;
+
 
 class AuthenticatedSessionController extends Controller
 {
@@ -23,20 +25,29 @@ class AuthenticatedSessionController extends Controller
     /**
      * Handle an incoming authentication request.
      */
-    public function store(LoginRequest $request): RedirectResponse
+
+   
+public function store(LoginRequest $request)
+
 {
     $request->authenticate();
     $request->session()->regenerate();
 
     $user = Auth::user();
 
-    // Se o usuário for administrador
+    // Se o usuário for admin → retorna diretamente a view administrativa
     if ($user->is_admin) {
-        return redirect()->route('admin.index');  // rota da área administrativa
+        return response()->view('admin.carros.index', [
+            'carros' => Carros::all(),
+            'user' => $user
+        ]);
     }
 
-    // Caso contrário, área pública
-    return redirect()->route('public.index');
+    // Caso contrário → retorna a view pública
+    return response()->view('template.index', [
+        'user_name' => $user->name
+    ]);
+
 }
 
 
