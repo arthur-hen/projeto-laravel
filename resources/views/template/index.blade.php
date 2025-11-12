@@ -3,14 +3,50 @@
 
     <head>
 
+    @if(session('status'))
+<div class="alert alert-info text-center">
+    {{ session('status') }}
+</div>
+@endif
+
+
     @if(isset($user_name))
         <div class="alert alert-info text-center">
             Bem-vindo, {{ $user_name }}!
         </div>
     @endif
 
+  <style>
+.profile-avatar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #1e3a5f;
+    overflow: hidden;
+    border: 2px solid #ffffff;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.25);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-avatar:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px rgba(30, 58, 95, 0.6);
+}
+
+.profile-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+</style>
+
+
+
         <meta charset="utf-8">
-        <title>Cental - Car Rent Website Template</title>
+        <title>iCarros - Car Rent Website Template</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <meta content="" name="keywords">
         <meta content="" name="description">
@@ -58,49 +94,74 @@
         </div>
         <!-- Spinner End -->
          @yield("conteudo")
-        <!-- Topbar Start -->
-        <div class="container-fluid topbar bg-secondary d-none d-xl-block w-100">
-            <div class="container">
-                <div class="row gx-0 align-items-center" style="height: 45px;">
-                    <div class="col-lg-6 text-center text-lg-start mb-lg-0">
-                        <div class="d-flex flex-wrap">
-                            <a href="#" class="text-muted me-4"><i class="fas fa-map-marker-alt text-primary me-2"></i>Find A Location</a>
-                            <a href="tel:+01234567890" class="text-muted me-4"><i class="fas fa-phone-alt text-primary me-2"></i>+01234567890</a>
-                            <a href="mailto:example@gmail.com" class="text-muted me-0"><i class="fas fa-envelope text-primary me-2"></i>Example@gmail.com</a>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 text-center text-lg-end">
-                        <div class="d-flex align-items-center justify-content-end">
-                            <a href="#" class="btn btn-light btn-sm-square rounded-circle me-3"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#" class="btn btn-light btn-sm-square rounded-circle me-3"><i class="fab fa-twitter"></i></a>
-                            <a href="#" class="btn btn-light btn-sm-square rounded-circle me-3"><i class="fab fa-instagram"></i></a>
-                            <a href="#" class="btn btn-light btn-sm-square rounded-circle me-0"><i class="fab fa-linkedin-in"></i></a>
-                        </div>
-                    </div>
+ <!-- Topbar Start -->
+<div class="container-fluid topbar bg-secondary d-none d-xl-block w-100">
+    <div class="container">
+        <div class="row gx-0 align-items-center" style="height: 45px;">
+            
+
+            <div class="col-lg-6 text-center text-lg-end">
+                <div class="d-flex align-items-center justify-content-end">
+
+                    <!-- Bolinha dinâmica de perfil -->
+@auth
+<a href="{{ route('profile.show') }}" class="profile-avatar">
+    <img src="{{ asset('assets/img/avatar.png') }}" alt="Perfil" class="profile-img">
+</a>
+@endauth
+
+<!-- Visitante (sem login) -->
+<!-- Visitante (sem login) -->
+@guest
+<a href="#" class="profile-avatar" id="guestProfileBtn">
+    <img src="{{ asset('assets/img/avatar.png') }}" alt="Registrar" class="profile-img">
+</a>
+
+<!-- Alerta que aparece quando o visitante tenta acessar -->
+<div id="guestAlert" 
+     style="display:none; position:fixed; top:20px; right:20px; z-index:1050; 
+            background:#1e3a5f; color:white; padding:15px 20px; border-radius:10px; 
+            box-shadow:0 0 10px rgba(0,0,0,0.4);">
+    <strong>⚠️ Atenção:</strong> Crie um usuário para acessar o perfil.
+</div>
+
+<script>
+document.getElementById('guestProfileBtn').addEventListener('click', function (e) {
+    e.preventDefault();
+    const alertBox = document.getElementById('guestAlert');
+    alertBox.style.display = 'block';
+    setTimeout(() => {
+        alertBox.style.display = 'none';
+        window.location.href = "{{ route('register') }}"; // Redireciona após exibir
+    }, 2500); // Mostra por 2.5 segundos e depois redireciona
+});
+</script>
+@endguest
+
+
+
+
+
                 </div>
             </div>
         </div>
-        <!-- Topbar End -->
+    </div>
+</div>
+<!-- Topbar End -->
+
 
         <!-- Navbar & Hero Start -->
         <div class="container-fluid nav-bar sticky-top px-0 px-lg-4 py-2 py-lg-0">
             <div class="container">
                 <nav class="navbar navbar-expand-lg navbar-light">
                     <a href="" class="navbar-brand p-0">
-                        <h1 class="display-6 text-primary"><i class="fas fa-car-alt me-3"></i></i>Cental</h1>
+                        <h1 class="display-6 text-primary"><i class="fas fa-car-alt me-3"></i></i>iCarros</h1>
                     </a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                         <span class="fa fa-bars"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarCollapse">
-                        <div class="navbar-nav mx-auto py-0">
-                            <a href="index.html" class="nav-item nav-link active">Home</a>
-                            <a href="about.html" class="nav-item nav-link">About</a>
-                            <a href="vehicle.html" class="nav-item nav-link">Vehicle</a>
-                            <a href="team.html" class="nav-item nav-link">Team</a>
-                            <a href="blog.html" class="nav-item nav-link">Blog</a>
-                            <a href="contact.html" class="nav-item nav-link">Contact</a>
-                        </div>
+                        
                     </div>
                 </nav>
             </div>
@@ -155,193 +216,79 @@
 
        
 
-        <!-- Car categories Start -->
-        <div class="container-fluid categories py-5">
-            <div class="container">
-                <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800px;">
-                    <h1 class="display-5 text-capitalize mb-3">Nossos <span class="text-primary">Veiculos</span></h1>
-                </div>
-                <div class="categories-carousel owl-carousel wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="categories-item p-4">
-                        <div class="categories-item-inner">
-                            <div class="categories-img rounded-top">
-                                <img src="{{('assets/img/car-1.png')}}" class="img-fluid w-100 rounded-top" alt="">
-                            </div>
-                            <div class="categories-content rounded-bottom p-4">
-                                <h4>Mercedes Benz R3</h4>
-                                <div class="categories-review mb-4">
-                                    <div class="me-3">4.5 Review</div>
-                                    <div class="d-flex justify-content-center text-secondary">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star text-body"></i>
-                                    </div>
-                                </div>
-                                <div class="mb-4">
-                                    <h4 class="bg-white text-primary rounded-pill py-2 px-4 mb-0">$99:00/Day</h4>
-                                </div>
-                                <div class="row gy-2 gx-0 text-center mb-4">
-                                    <div class="col-4 border-end border-white">
-                                        <i class="fa fa-users text-dark"></i> <span class="text-body ms-1">4 Seat</span>
-                                    </div>
-                                    <div class="col-4 border-end border-white">
-                                        <i class="fa fa-car text-dark"></i> <span class="text-body ms-1">AT/MT</span>
-                                    </div>
-                                    <div class="col-4">
-                                        <i class="fa fa-gas-pump text-dark"></i> <span class="text-body ms-1">Petrol</span>
-                                    </div>
-                                    <div class="col-4 border-end border-white">
-                                        <i class="fa fa-car text-dark"></i> <span class="text-body ms-1">2015</span>
-                                    </div>
-                                    <div class="col-4 border-end border-white">
-                                        <i class="fa fa-cogs text-dark"></i> <span class="text-body ms-1">AUTO</span>
-                                    </div>
-                                    <div class="col-4">
-                                        <i class="fa fa-road text-dark"></i> <span class="text-body ms-1">27K</span>
-                                    </div>
-                                </div>
-                                <a href="#" class="btn btn-primary rounded-pill d-flex justify-content-center py-3">Book Now</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="categories-item p-4">
-                        <div class="categories-item-inner">
-                            <div class="categories-img rounded-top">
-                                <img src="{{('assets/img/car-2.png')}}" class="img-fluid w-100 rounded-top" alt="">
-                            </div>
-                            <div class="categories-content rounded-bottom p-4">
-                                <h4>Toyota Corolla Cross</h4>
-                                <div class="categories-review mb-4">
-                                    <div class="me-3">3.5 Review</div>
-                                    <div class="d-flex justify-content-center text-secondary">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star text-body"></i>
-                                    </div>
-                                </div>
-                                <div class="mb-4">
-                                    <h4 class="bg-white text-primary rounded-pill py-2 px-4 mb-0">$128:00/Day</h4>
-                                </div>
-                                <div class="row gy-2 gx-0 text-center mb-4">
-                                    <div class="col-4 border-end border-white">
-                                        <i class="fa fa-users text-dark"></i> <span class="text-body ms-1">4 Seat</span>
-                                    </div>
-                                    <div class="col-4 border-end border-white">
-                                        <i class="fa fa-car text-dark"></i> <span class="text-body ms-1">AT/MT</span>
-                                    </div>
-                                    <div class="col-4">
-                                        <i class="fa fa-gas-pump text-dark"></i> <span class="text-body ms-1">Petrol</span>
-                                    </div>
-                                    <div class="col-4 border-end border-white">
-                                        <i class="fa fa-car text-dark"></i> <span class="text-body ms-1">2015</span>
-                                    </div>
-                                    <div class="col-4 border-end border-white">
-                                        <i class="fa fa-cogs text-dark"></i> <span class="text-body ms-1">AUTO</span>
-                                    </div>
-                                    <div class="col-4">
-                                        <i class="fa fa-road text-dark"></i> <span class="text-body ms-1">27K</span>
-                                    </div>
-                                </div>
-                                <a href="#" class="btn btn-primary rounded-pill d-flex justify-content-center py-3">Book Now</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="categories-item p-4">
-                        <div class="categories-item-inner">
-                            <div class="categories-img rounded-top">
-                                <img src="{{('assets/img/car-3.png')}}" class="img-fluid w-100 rounded-top" alt="">
-                            </div>
-                            <div class="categories-content rounded-bottom p-4">
-                                <h4>Tesla Model S Plaid</h4>
-                                <div class="categories-review mb-4">
-                                    <div class="me-3">3.8 Review</div>
-                                    <div class="d-flex justify-content-center text-secondary">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star text-body"></i>
-                                    </div>
-                                </div>
-                                <div class="mb-4">
-                                    <h4 class="bg-white text-primary rounded-pill py-2 px-4 mb-0">$170:00/Day</h4>
-                                </div>
-                                <div class="row gy-2 gx-0 text-center mb-4">
-                                    <div class="col-4 border-end border-white">
-                                        <i class="fa fa-users text-dark"></i> <span class="text-body ms-1">4 Seat</span>
-                                    </div>
-                                    <div class="col-4 border-end border-white">
-                                        <i class="fa fa-car text-dark"></i> <span class="text-body ms-1">AT/MT</span>
-                                    </div>
-                                    <div class="col-4">
-                                        <i class="fa fa-gas-pump text-dark"></i> <span class="text-body ms-1">Petrol</span>
-                                    </div>
-                                    <div class="col-4 border-end border-white">
-                                        <i class="fa fa-car text-dark"></i> <span class="text-body ms-1">2015</span>
-                                    </div>
-                                    <div class="col-4 border-end border-white">
-                                        <i class="fa fa-cogs text-dark"></i> <span class="text-body ms-1">AUTO</span>
-                                    </div>
-                                    <div class="col-4">
-                                        <i class="fa fa-road text-dark"></i> <span class="text-body ms-1">27K</span>
-                                    </div>
-                                </div>
-                                <a href="#" class="btn btn-primary rounded-pill d-flex justify-content-center py-3">Book Now</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="categories-item p-4">
-                        <div class="categories-item-inner">
-                            <div class="categories-img rounded-top">
-                                <img src="{{('assets/img/car-4.png')}}" class="img-fluid w-100 rounded-top" alt="">
-                            </div>
-                            <div class="categories-content rounded-bottom p-4">
-                                <h4>Hyundai Kona Electric</h4>
-                                <div class="categories-review mb-4">
-                                    <div class="me-3">4.8 Review</div>
-                                    <div class="d-flex justify-content-center text-secondary">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                    </div>
-                                </div>
-                                <div class="mb-4">
-                                    <h4 class="bg-white text-primary rounded-pill py-2 px-4 mb-0">$187:00/Day</h4>
-                                </div>
-                                <div class="row gy-2 gx-0 text-center mb-4">
-                                    <div class="col-4 border-end border-white">
-                                        <i class="fa fa-users text-dark"></i> <span class="text-body ms-1">4 Seat</span>
-                                    </div>
-                                    <div class="col-4 border-end border-white">
-                                        <i class="fa fa-car text-dark"></i> <span class="text-body ms-1">AT/MT</span>
-                                    </div>
-                                    <div class="col-4">
-                                        <i class="fa fa-gas-pump text-dark"></i> <span class="text-body ms-1">Petrol</span>
-                                    </div>
-                                    <div class="col-4 border-end border-white">
-                                        <i class="fa fa-car text-dark"></i> <span class="text-body ms-1">2015</span>
-                                    </div>
-                                    <div class="col-4 border-end border-white">
-                                        <i class="fa fa-cogs text-dark"></i> <span class="text-body ms-1">AUTO</span>
-                                    </div>
-                                    <div class="col-4">
-                                        <i class="fa fa-road text-dark"></i> <span class="text-body ms-1">27K</span>
-                                    </div>
-                                </div>
-                                <a href="#" class="btn btn-primary rounded-pill d-flex justify-content-center py-3">Book Now</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+       <!-- Car categories Start -->
+<div class="container-fluid categories py-5">
+    <div class="container">
+        <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800px;">
+            <h1 class="display-5 text-capitalize mb-3">Nossos <span class="text-primary">Veículos</span></h1>
         </div>
-        <!-- Car categories End -->
+
+        @if(isset($carros) && count($carros) > 0)
+            <div class="categories-carousel owl-carousel wow fadeInUp" data-wow-delay="0.1s">
+                @foreach($carros as $carro)
+                    <div class="categories-item p-4">
+                        <div class="categories-item-inner">
+                            <div class="categories-img rounded-top">
+                                <img src="{{ $carro->foto1 }}" class="img-fluid w-100 rounded-top" alt="{{ $carro->modelo }}">
+                            </div>
+                            <div class="categories-content rounded-bottom p-4">
+                                <h4>{{ $carro->marca }} {{ $carro->modelo }}</h4>
+
+                                <div class="categories-review mb-4">
+                                    <div class="me-3">{{ rand(3,5) }}.{{ rand(0,9) }} Review</div>
+                                    <div class="d-flex justify-content-center text-secondary">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star text-body"></i>
+                                    </div>
+                                </div>
+
+                                <div class="mb-4">
+                                    <h4 class="bg-white text-primary rounded-pill py-2 px-4 mb-0">
+                                        R$ {{ number_format($carro->valor, 2, ',', '.') }}
+                                    </h4>
+                                </div>
+
+                                <div class="row gy-2 gx-0 text-center mb-4">
+                                    <div class="col-4 border-end border-white">
+                                        <i class="fa fa-users text-dark"></i> <span class="text-body ms-1">4 Seat</span>
+                                    </div>
+                                    <div class="col-4 border-end border-white">
+                                        <i class="fa fa-car text-dark"></i> <span class="text-body ms-1">AT/MT</span>
+                                    </div>
+                                    <div class="col-4">
+                                        <i class="fa fa-gas-pump text-dark"></i> <span class="text-body ms-1">Petrol</span>
+                                    </div>
+                                    <div class="col-4 border-end border-white">
+                                        <i class="fa fa-calendar text-dark"></i> <span class="text-body ms-1">{{ $carro->ano_fabricacao }}</span>
+                                    </div>
+                                    <div class="col-4 border-end border-white">
+                                        <i class="fa fa-cogs text-dark"></i> <span class="text-body ms-1">AUTO</span>
+                                    </div>
+                                    <div class="col-4">
+                                        <i class="fa fa-road text-dark"></i> <span class="text-body ms-1">{{ number_format($carro->quilometragem, 0, ',', '.') }} km</span>
+                                    </div>
+                                </div>
+
+                                <a href="{{ route('public.carros.show', $carro->id) }}"
+                                   class="btn btn-primary rounded-pill d-flex justify-content-center py-3">
+                                    Saiba mais
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        @else
+            <p class="text-center text-muted">Nenhum veículo disponível no momento.</p>
+        @endif
+    </div>
+</div>
+<!-- Car categories End -->
+
+
 
         
       
@@ -356,10 +303,7 @@
                                 <h4 class="text-white mb-4">About Us</h4>
                                 <p class="mb-3">Dolor amet sit justo amet elitr clita ipsum elitr est.Lorem ipsum dolor sit amet, consectetur adipiscing elit consectetur adipiscing elit.</p>
                             </div>
-                            <div class="position-relative">
-                                <input class="form-control rounded-pill w-100 py-3 ps-4 pe-5" type="text" placeholder="Enter your email">
-                                <button type="button" class="btn btn-secondary rounded-pill position-absolute top-0 end-0 py-2 mt-2 me-2">Subscribe</button>
-                            </div>
+                            
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-6 col-xl-3">
@@ -397,12 +341,7 @@
                             <a href="mailto:info@example.com"><i class="fas fa-envelope me-2"></i> info@example.com</a>
                             <a href="tel:+012 345 67890"><i class="fas fa-phone me-2"></i> +012 345 67890</a>
                             <a href="tel:+012 345 67890" class="mb-3"><i class="fas fa-print me-2"></i> +012 345 67890</a>
-                            <div class="d-flex">
-                                <a class="btn btn-secondary btn-md-square rounded-circle me-3" href=""><i class="fab fa-facebook-f text-white"></i></a>
-                                <a class="btn btn-secondary btn-md-square rounded-circle me-3" href=""><i class="fab fa-twitter text-white"></i></a>
-                                <a class="btn btn-secondary btn-md-square rounded-circle me-3" href=""><i class="fab fa-instagram text-white"></i></a>
-                                <a class="btn btn-secondary btn-md-square rounded-circle me-0" href=""><i class="fab fa-linkedin-in text-white"></i></a>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>

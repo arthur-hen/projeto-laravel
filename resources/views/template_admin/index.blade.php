@@ -15,70 +15,63 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
 
     <style>
-        body {
-            background-color: #f4f6f9;
-        }
+        html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    background-color: #f4f6f9;
+}
 
-        .navbar {
-            background-color: #212529 !important;
-        }
+/* Barra superior */
+.navbar {
+    background-color: #212529 !important;
+}
 
-        .navbar-brand h1 {
-            color: #fff !important;
-        }
+.navbar-brand h1 {
+    color: #fff !important;
+}
 
-        .content-area {
-            min-height: 80vh;
-            padding-top: 2rem;
-            padding-bottom: 2rem;
-        }
+/* Área principal */
+.main-content {
+    flex: 1; /* ocupa todo o espaço disponível entre navbar e footer */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
 
-        footer {
-            background: #212529;
-            color: #ccc;
-            padding: 20px 0;
-            text-align: center;
-        }
+.content-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* centraliza verticalmente caso o conteúdo seja curto */
+}
 
-        footer a {
-            color: #0d6efd;
-        }
+/* Rodapé colado no final */
+footer {
+    background: #212529;
+    color: #ccc;
+    padding: 20px 0;
+    text-align: center;
+    width: 100%;
+}
 
-        .sidebar {
-            background: #343a40;
-            color: #fff;
-            height: 100%;
-            min-height: 100vh;
-            position: fixed;
-            width: 220px;
-            padding-top: 60px;
-        }
+footer a {
+    color: #0d6efd;
+}
 
-        .sidebar a {
-            color: #adb5bd;
-            display: block;
-            padding: 10px 20px;
-            text-decoration: none;
-        }
+/* Botão logout */
+.logout-btn {
+    color: #fff;
+    border: none;
+    background: none;
+}
 
-        .sidebar a:hover, .sidebar a.active {
-            background-color: #0d6efd;
-            color: white;
-        }
+.logout-btn:hover {
+    color: #dc3545;
+}
 
-        .main-content {
-            margin-left: 220px;
-        }
 
-        .logout-btn {
-            color: #fff;
-            border: none;
-            background: none;
-        }
-
-        .logout-btn:hover {
-            color: #dc3545;
-        }
     </style>
 </head>
 
@@ -109,18 +102,9 @@
         </div>
     </nav>
 
-    <!-- Barra lateral -->
-    <div class="sidebar">
-        <h5 class="px-3 mb-4 text-uppercase text-secondary">Menu</h5>
-        <a href="{{ route('admin.carros.index') }}" class="{{ request()->is('admin') ? 'active' : '' }}">
-            <i class="fas fa-car me-2"></i> Veículos
-        </a>
-        <a href="{{ route('admin.carros.create') }}">
-            <i class="fas fa-plus me-2"></i> Cadastrar Carro
-        </a>
-        <a href="{{ url('/') }}">
-            <i class="fas fa-globe me-2"></i> Ir para o site
-        </a>
+        
+
+
     </div>
 
     <!-- Área principal -->

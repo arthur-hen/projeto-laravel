@@ -63,6 +63,7 @@ public function store(LoginRequest $request)
 
         $request->session()->regenerateToken();
 
-        return redirect('/');
+       return redirect()->route('public.index')->with('status', 'Você saiu da conta com sucesso.');
+
     }
 }

@@ -1,13 +1,13 @@
 @extends('template.index')
 
-@section('conteudo') {{-- igual ao @yield("conteudo") do template --}}
+@section('conteudo')
 
 <div class="container-fluid mt-5 pt-5">
     <div class="row justify-content-center">
         <div class="col-md-4">
             <h2 class="mb-4 text-center">Login</h2>
 
-            {{-- Mensagem de status da sessão (ex: senha resetada) --}}
+            
             @if (session('status'))
             <div class="alert alert-info">
                 {{ session('status') }}

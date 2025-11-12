@@ -14,7 +14,7 @@
     @endif
 
     <div class="d-flex justify-content-end mb-3">
-        <a href="{{ route('admin.carros.create') }}" class="btn btn-primary rounded-pill px-4 py-2">
+        <a href="{{ route('admin.carros.cadastrar') }}" class="btn btn-primary rounded-pill px-4 py-2">
             <i class="fas fa-plus me-2"></i>Adicionar Novo Veículo
         </a>
     </div>
@@ -50,10 +50,10 @@
                         <a href="{{ $carro->foto3 }}" target="_blank">3</a>
                     </td>
                     <td>
-                        <a href="{{ route('admin.carros.edit', $carro->id) }}" class="btn btn-sm btn-warning rounded-pill px-3 me-1">
+                        <a href="{{ route('admin.carros.editar', $carro->id) }}" class="btn btn-sm btn-warning rounded-pill px-3 me-1">
                             <i class="fas fa-edit"></i>
                         </a>
-                        <form action="{{ route('admin.carros.destroy', $carro->id) }}" method="POST" style="display:inline;">
+                        <form action="{{ route('admin.carros.excluir', $carro->id) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')
                             <button class="btn btn-sm btn-danger rounded-pill px-3" onclick="return confirm('Tem certeza que deseja excluir este veículo?')">

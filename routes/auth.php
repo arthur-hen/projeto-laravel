@@ -12,6 +12,13 @@ use App\Http\Controllers\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
 
 
+Route::middleware(['web'])->group(function () {
+    Route::get('/profile', function () {
+        return view('profile.show');
+    })->middleware('auth')->name('profile.show');
+});
+
+
     Route::get('register', [RegisteredUserController::class, 'create'])
                 ->name('register');
 
