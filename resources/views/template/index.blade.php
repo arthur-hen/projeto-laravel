@@ -189,9 +189,12 @@ document.getElementById('guestProfileBtn').addEventListener('click', function (e
         <div class="container-fluid nav-bar sticky-top px-0 px-lg-4 py-2 py-lg-0">
             <div class="container">
                 <nav class="navbar navbar-expand-lg navbar-light">
-                    <a href="" class="navbar-brand p-0">
-                        <h1 class="display-6 text-primary"><i class="fas fa-car-alt me-3"></i></i>iCarros</h1>
-                    </a>
+                    <a href="{{ route('public.index') }}" class="navbar-brand p-0">
+                        <h1 class="display-6 text-primary">
+                     <i class="fas fa-car-alt me-3"></i> iCarros
+                                                            </h1>
+                        </a>
+
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                         <span class="fa fa-bars"></span>
                     </button>
@@ -258,11 +261,14 @@ document.getElementById('guestProfileBtn').addEventListener('click', function (e
             <h1 class="display-5 text-capitalize mb-3">Nossos <span class="text-primary">Veículos</span></h1>
         </div>
 
+        {{-- SE EXISTEM CARROS --}}
         @if(isset($carros) && count($carros) > 0)
+
             <div class="categories-carousel owl-carousel wow fadeInUp" data-wow-delay="0.1s">
                 @foreach($carros as $carro)
                     <div class="categories-item p-4">
                         <div class="categories-item-inner">
+
                             <div class="image-wrapper">
                                 <img src="{{ $carro->foto1 }}" alt="{{ $carro->modelo }}">
                             </div>
@@ -270,16 +276,7 @@ document.getElementById('guestProfileBtn').addEventListener('click', function (e
                             <div class="categories-content rounded-bottom p-4">
                                 <h4>{{ $carro->marca }} {{ $carro->modelo }}</h4>
 
-                                <div class="categories-review mb-4">
-                                    <div class="me-3">{{ rand(3,5) }}.{{ rand(0,9) }} Review</div>
-                                    <div class="d-flex justify-content-center text-secondary">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star text-body"></i>
-                                    </div>
-                                </div>
+
 
                                 <div class="mb-4">
                                     <h4 class="bg-white text-primary rounded-pill py-2 px-4 mb-0">
@@ -289,22 +286,22 @@ document.getElementById('guestProfileBtn').addEventListener('click', function (e
 
                                 <div class="row gy-2 gx-0 text-center mb-4">
                                     <div class="col-4 border-end border-white">
-                                        <i class="fa fa-users text-dark"></i> <span class="text-body ms-1">4 Seat</span>
+                                        <i class="fa fa-users text-dark"></i> <span class="text-body ms-1">Ano</span>
                                     </div>
                                     <div class="col-4 border-end border-white">
-                                        <i class="fa fa-car text-dark"></i> <span class="text-body ms-1">AT/MT</span>
+                                        <i class="fa fa-car text-dark"></i> <span class="text-body ms-1">Marca</span>
                                     </div>
                                     <div class="col-4">
-                                        <i class="fa fa-gas-pump text-dark"></i> <span class="text-body ms-1">Petrol</span>
+                                        <i class="fa fa-gas-pump text-dark"></i> <span class="text-body ms-1">KM</span>
                                     </div>
                                     <div class="col-4 border-end border-white">
                                         <i class="fa fa-calendar text-dark"></i> <span class="text-body ms-1">{{ $carro->ano_fabricacao }}</span>
                                     </div>
                                     <div class="col-4 border-end border-white">
-                                        <i class="fa fa-cogs text-dark"></i> <span class="text-body ms-1">AUTO</span>
+                                        <i class="fa fa-cogs text-dark"></i> <span class="text-body ms-1">{{ $carro->marca }}</span>
                                     </div>
                                     <div class="col-4">
-                                        <i class="fa fa-road text-dark"></i> <span class="text-body ms-1">{{ number_format($carro->quilometragem, 0, ',', '.') }} km</span>
+                                        <i class="fa fa-road text-dark"></i> <span class="text-body ms-1">{{ number_format($carro->quilometragem, 0, ',', '.') }} </span>
                                     </div>
                                 </div>
 
@@ -317,12 +314,26 @@ document.getElementById('guestProfileBtn').addEventListener('click', function (e
                     </div>
                 @endforeach
             </div>
+
+        {{-- SE NÃO EXISTEM CARROS --}}
         @else
-            <p class="text-center text-muted">Nenhum veículo disponível no momento.</p>
+
+            @if (request()->routeIs('login') || request()->routeIs('register'))
+                <p class="text-center text-primary fw-bold mt-4">
+                    Realize o login para ver os carros.
+                </p>
+            @else
+                <p class="text-center text-muted">
+                    Nenhum veículo disponível no momento.
+                </p>
+            @endif
+
         @endif
+
     </div>
 </div>
 <!-- Car categories End -->
+
 
 
 

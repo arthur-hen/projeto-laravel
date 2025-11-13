@@ -83,9 +83,11 @@
             <button type="submit" class="btn btn-success rounded-pill px-5 py-2">
                 <i class="fas fa-save me-2"></i>{{ isset($carro) ? 'Salvar Alterações' : 'Cadastrar Veículo' }}
             </button>
-            <a href="{{ route('admin.index') }}" class="btn btn-secondary rounded-pill px-5 py-2 ms-2">
-                Voltar
-            </a>
+            <a href="{{ route('admin.carros.index') }}" class="btn btn-secondary rounded-pill px-5 py-2 ms-2">
+    Voltar
+</a>
+
+
         </div>
     </form>
 </div>
