@@ -57,6 +57,12 @@
                 <input type="number" step="0.01" name="valor" class="form-control" value="{{ old('valor', $carro->valor ?? '') }}" required>
             </div>
 
+            <div class="col-12 mt-3">
+                <label class="form-label fw-bold">Descrição</label>
+                <textarea name="descricao" class="form-control" rows="4">{{ old('descricao', $carro->descricao ?? '') }}</textarea>
+            </div>
+
+
             <div class="col-md-4">
                 <label class="form-label fw-bold">Link da Foto 1</label>
                 <input type="url" name="foto1" class="form-control" value="{{ old('foto1', $carro->foto1 ?? '') }}" required>

@@ -35,6 +35,7 @@ class CarrosController extends Controller
             'cor'            => 'required|string|max:50',
             'ano_fabricacao' => 'required|integer',
             'quilometragem'  => 'required|numeric',
+            'descricao'      => 'nullable|string|max:2000',
             'valor'          => 'required|numeric',
             'foto1'          => 'required|url',
             'foto2'          => 'required|url',
@@ -65,6 +66,7 @@ class CarrosController extends Controller
             'ano_fabricacao' => 'required|integer',
             'quilometragem'  => 'required|numeric',
             'valor'          => 'required|numeric',
+            'descricao'      => 'nullable|string|max:2000',
             'foto1'          => 'required|url',
             'foto2'          => 'required|url',
             'foto3'          => 'required|url',
@@ -106,6 +108,6 @@ class CarrosController extends Controller
     public function show($id)
     {
         $carro = Carros::findOrFail($id);
-        return view('template.carro_detalhes', compact('carro'));
+        return view('template.carros_detalhes', compact('carro'));
     }
 }

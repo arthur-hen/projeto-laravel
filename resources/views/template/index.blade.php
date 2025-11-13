@@ -17,6 +17,41 @@
     @endif
 
   <style>
+
+.card-image-fixed {
+    height: 260px;      /* altura fixa */
+    object-fit: cover;  /* corta a imagem corretamente */
+    width: 100%;
+}
+
+
+.image-wrapper {
+    width: 100%;
+    height: 250px;    
+    overflow: hidden;
+    border-radius: 10px 10px 0 0;
+}
+
+.image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+}
+
+.card-fixed {
+    height: 430px; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-image-fixed {
+    height: 260px; 
+    width: 100%;
+    object-fit: cover; 
+    border-radius: 8px 8px 0 0;
+}
+
 .profile-avatar {
     display: inline-flex;
     align-items: center;
@@ -216,7 +251,7 @@ document.getElementById('guestProfileBtn').addEventListener('click', function (e
 
        
 
-       <!-- Car categories Start -->
+      <!-- Car categories Start -->
 <div class="container-fluid categories py-5">
     <div class="container">
         <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800px;">
@@ -228,9 +263,10 @@ document.getElementById('guestProfileBtn').addEventListener('click', function (e
                 @foreach($carros as $carro)
                     <div class="categories-item p-4">
                         <div class="categories-item-inner">
-                            <div class="categories-img rounded-top">
-                                <img src="{{ $carro->foto1 }}" class="img-fluid w-100 rounded-top" alt="{{ $carro->modelo }}">
+                            <div class="image-wrapper">
+                                <img src="{{ $carro->foto1 }}" alt="{{ $carro->modelo }}">
                             </div>
+
                             <div class="categories-content rounded-bottom p-4">
                                 <h4>{{ $carro->marca }} {{ $carro->modelo }}</h4>
 
@@ -366,9 +402,6 @@ document.getElementById('guestProfileBtn').addEventListener('click', function (e
         </div>
         <!-- Copyright End -->
 
-
-        <!-- Back to Top -->
-        <a href="#" class="btn btn-secondary btn-lg-square rounded-circle back-to-top"><i class="fa fa-arrow-up"></i></a>   
 
         
     <!-- JavaScript Libraries -->

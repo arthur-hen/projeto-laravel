@@ -21,5 +21,6 @@ class Carros extends Model
         'foto1',
         'foto2',
         'foto3',
+        'descricao'
     ];
 }
