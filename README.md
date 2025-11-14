@@ -57,3 +57,8 @@ A aplicação abre em:
 
 http://127.0.0.1:8000/carros
 
+
+# ✅ **PARA ACESSAR A PAGINA ADMIN**
+
+
+# ✅ **FOTOS DAS TELAS**
