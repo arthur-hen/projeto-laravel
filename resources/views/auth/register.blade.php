@@ -1,5 +1,25 @@
 @extends('template.index')
+
 @section('conteudo')
+
+@if(session('success'))
+    <div class="alert alert-success fw-bold text-center shadow-lg"
+         style="
+            position: fixed;
+            top: 90px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 9999;
+            font-size: 20px;
+            border-radius: 12px;
+            padding: 15px 35px;
+            background-color: #28a745;
+            color: #fff;
+         ">
+        {{ session('success') }}
+    </div>
+@endif
+
 
 <div class="container-fluid mt-5 pt-3"> 
   <div class="row">

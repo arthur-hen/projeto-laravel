@@ -45,21 +45,7 @@
             @enderror
         </div>
 
-        {{-- Lembrar-me --}}
-        <div class="form-check mb-3">
-            <input id="remember_me" type="checkbox" class="form-check-input" name="remember">
-            <label class="form-check-label" for="remember_me">
-                Lembrar-me
-            </label>
-        </div>
-
         <div class="d-flex justify-content-between align-items-center">
-            @if (Route::has('password.request'))
-            <a class="small" href="{{ route('password.request') }}">
-                Esqueceu sua senha?
-            </a>
-            @endif
-
             <button type="submit" class="btn btn-primary">
                 Entrar
             </button>

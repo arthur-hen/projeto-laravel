@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CarrosController;
 use App\Http\Controllers\ClienteController;
+use \App\Http\Controllers\Auth\UpdatePasswordController;
 use Illuminate\Support\Facades\Route;
 
 // --------------------------------------------
@@ -12,6 +13,15 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::get('/alterar-senha', function () {
+    return view('auth.change-password');
+})->middleware('auth')->name('password.form');
+
+Route::put('/alterar-senha', [ProfileController::class, 'updatePassword'])
+    ->middleware('auth')
+    ->name('password.update');
+
 });
 
 require __DIR__ . '/auth.php';
@@ -44,6 +54,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/clientes/atualizar/{id}', [ClienteController::class, 'update'])->name('clientes.atualizar');
     Route::get('/clientes/excluir/{id}', [ClienteController::class, 'destroy'])->name('clientes.excluir');
 }); 
+
+    
 
 // --------------------------------------------
 // ÁREA ADMINISTRATIVA
