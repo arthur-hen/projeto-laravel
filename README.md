@@ -31,8 +31,6 @@ php artisan key:generate
 
 # — INSTALAR DEPENDÊNCIAS
 
-
-
 composer require laravel/breeze --dev
 
 php artisan breeze:install
@@ -41,11 +39,15 @@ npm install
 npm run build
 
 
-
 # MIGRATIONS
 
 
 php artisan migrate
+
+
+# RODAR O SEEDER
+
+php artisan db:seed
 
 
 # SUBIR O SERVIDOR LOCAL
