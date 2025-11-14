@@ -3,7 +3,7 @@
 
 Antes de qualquer comando, a pessoa precisa ter instalado:
 
-### ✔ PHP 8.2)
+### ✔ PHP 8.2
 
 ### ✔ Composer
 
