@@ -10,26 +10,26 @@ Antes de qualquer comando, a pessoa precisa ter instalado:
 ### ✔ XAMPP
 
 
-### Criar o projeto Laravel
+# Criar o projeto Laravel
 
 
 composer create-project laravel/laravel site
 
 
-### Entrar na pasta do projeto
+# Entrar na pasta do projeto
 
 
 cd site
 
 
-### Gerar a key do Laravel
+# Gerar a key do Laravel
 
 
 php artisan key:generate
 
 
 
-# — INSTALAR DEPENDÊNCIAS
+# INSTALAR DEPENDÊNCIAS
 
 composer require laravel/breeze --dev
 
