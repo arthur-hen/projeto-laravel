@@ -7,26 +7,19 @@ use App\Models\Carros;
 
 class CarrosController extends Controller
 {
-    /**
-     * ===============================
-     * ÁREA ADMINISTRATIVA
-     * ===============================
-     */
 
-    // Lista todos os veículos no painel admin
     public function index()
     {
         $carros = Carros::all();
         return view('admin.carros.index', compact('carros'));
     }
 
-    // Form de criação
+
     public function create()
     {
         return view('admin.carros.form');
     }
 
-    // Salva novo veículo
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -49,14 +42,13 @@ class CarrosController extends Controller
             ->with('success', 'Veículo cadastrado com sucesso!');
     }
 
-    // Form de edição
     public function edit($id)
     {
         $carro = Carros::findOrFail($id);
         return view('admin.carros.form', compact('carro'));
     }
 
-    // Atualiza veículo
+
     public function update(Request $request, $id)
     {
         $validated = $request->validate([
@@ -80,7 +72,7 @@ class CarrosController extends Controller
             ->with('success', 'Veículo atualizado com sucesso!');
     }
 
-    // Exclui veículo
+ 
     public function destroy($id)
     {
         $carro = Carros::findOrFail($id);
@@ -91,20 +83,14 @@ class CarrosController extends Controller
             ->with('success', 'Veículo excluído com sucesso!');
     }
 
-    /**
-     * ===============================
-     * ÁREA PÚBLICA (SITE)
-     * ===============================
-     */
 
-    // Lista veículos no site público
     public function publicIndex()
     {
         $carros = Carros::all();
         return view('template.index', compact('carros'));
     }
 
-    // Detalhes para "Saiba mais"
+
     public function show($id)
     {
         $carro = Carros::findOrFail($id);

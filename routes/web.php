@@ -14,13 +14,6 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::get('/alterar-senha', function () {
-    return view('auth.change-password');
-})->middleware('auth')->name('password.form');
-
-Route::put('/alterar-senha', [ProfileController::class, 'updatePassword'])
-    ->middleware('auth')
-    ->name('password.update');
 
 });
 
@@ -40,22 +33,9 @@ Route::get('/login', function () {
 // Página principal com carros do banco
 Route::get('/carros', [CarrosController::class, 'publicIndex'])->name('public.index');
 
-// Página de detalhes de um carro (botão "Saiba mais")
+// Página de detalhes
 Route::get('/carros/{id}', [CarrosController::class, 'show'])->name('public.carros.show');
 
-// --------------------------------------------
-// CRUD DE CLIENTES (ADMIN OU FUTURO USO)
-// --------------------------------------------
-Route::middleware(['auth'])->group(function () {
-    Route::get('/clientes', [ClienteController::class, 'index'])->name('clientes.index');
-    Route::get('/clientes/cadastrar', [ClienteController::class, 'create'])->name('clientes.cadastrar');
-    Route::post('/clientes/salvar', [ClienteController::class, 'store'])->name('clientes.novo');
-    Route::get('/clientes/alterar/{id}', [ClienteController::class, 'edit'])->name('clientes.alterar');
-    Route::post('/clientes/atualizar/{id}', [ClienteController::class, 'update'])->name('clientes.atualizar');
-    Route::get('/clientes/excluir/{id}', [ClienteController::class, 'destroy'])->name('clientes.excluir');
-}); 
-
-    
 
 // --------------------------------------------
 // ÁREA ADMINISTRATIVA

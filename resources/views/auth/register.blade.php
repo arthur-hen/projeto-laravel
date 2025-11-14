@@ -2,6 +2,15 @@
 
 @section('conteudo')
 
+@error('name')
+    <div class="alert alert-danger mt-2">{{ $message }}</div>
+@enderror
+
+@error('email')
+    <div class="alert alert-danger mt-2">{{ $message }}</div>
+@enderror
+
+
 @if(session('success'))
     <div class="alert alert-success fw-bold text-center shadow-lg"
          style="

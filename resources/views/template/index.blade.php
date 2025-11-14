@@ -19,8 +19,8 @@
   <style>
 
 .card-image-fixed {
-    height: 260px;      /* altura fixa */
-    object-fit: cover;  /* corta a imagem corretamente */
+    height: 260px;      
+    object-fit: cover;  
     width: 100%;
 }
 
@@ -86,15 +86,6 @@
         <meta content="" name="keywords">
         <meta content="" name="description">
 
-        <!-- Google Web Fonts -->
-        <!-- <link rel="preconnect" href="https://fonts.googleapis.com"> -->
-        <!-- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
-        <!-- <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">  -->
-
-        <!-- Icon Font Stylesheet -->
-        <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/> -->
-        <!--<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet"> -->
-        
         <!-- Libraries Stylesheet -->
         <link href="{{('assets/lib/animate/animate.min.css')}}" rel="stylesheet">
         <link href="{{('assets/lib/owlcarousel/assets/owl.carousel.min.css')}}" rel="stylesheet">
@@ -145,7 +136,7 @@
 </a>
 @endauth
 
-<!-- Visitante (sem login) -->
+
 <!-- Visitante (sem login) -->
 @guest
 <a href="#" class="profile-avatar" id="guestProfileBtn">
@@ -167,8 +158,8 @@ document.getElementById('guestProfileBtn').addEventListener('click', function (e
     alertBox.style.display = 'block';
     setTimeout(() => {
         alertBox.style.display = 'none';
-        window.location.href = "{{ route('register') }}"; // Redireciona após exibir
-    }, 2500); // Mostra por 2.5 segundos e depois redireciona
+        window.location.href = "{{ route('register') }}"; 
+    }, 2500); 
 });
 </script>
 @endguest
@@ -400,13 +391,10 @@ document.getElementById('guestProfileBtn').addEventListener('click', function (e
         <div class="container-fluid copyright py-4">
             <div class="container">
                 <div class="row g-4 align-items-center">
-                    <div class="col-md-6 text-center text-md-start mb-md-0">
-                        <span class="text-body"><a href="#" class="border-bottom text-white"><i class="fas fa-copyright text-light me-2"></i>Your Site Name</a>, All right reserved.</span>
-                    </div>
                     <div class="col-md-6 text-center text-md-end text-body">
                         <!--/*** The author’s attribution link must remain intact in the template. ***/-->
                         <!--/*** If you wish to remove this credit link, please purchase the Pro Version . ***/-->
-                        Designed By <a class="border-bottom text-white" href="https://htmlcodex.com">HTML Codex</a>
+                       
                     </div>
                 </div>
             </div>
